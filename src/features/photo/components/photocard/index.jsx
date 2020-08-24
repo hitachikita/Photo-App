@@ -38,13 +38,13 @@ function Photocard(props) {
 
     return (
         <div className='photo'>
-            <div onClick={handleClick}>
+            <div>
                 <img
                     src={photo.photo}
                     alt={photo.title} />
             </div>
 
-            <div className='photo__overlay'>
+            <div className='photo__overlay' onClick={handleClick}>
                 <h3 className='photo__title'>{photo.title}</h3>
 
                 <div className='photo__actions'>
