@@ -11,7 +11,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 ## Install extensions:
 - sass
-- reactstrap, react-router-dom, react-redux, @reduxjs/toolkit, react-select
+- reactstrap, react-router-dom, react-redux, @reduxjs/toolkit, react-select, react-share
 - bootstrap, formik, yup
 
 ## Install font: 
