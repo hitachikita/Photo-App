@@ -11,8 +11,10 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 ## Install extensions:
 - sass
-- reactstrap, react-router-dom, react-redux, @reduxjs/toolkit, react-select, react-share
-- bootstrap, formik, yup
+- reactstrap, react-router-dom, react-redux, @reduxjs/toolkit, react-select,  react-share, react-firebase, 
+- @fortawesome/react-fontawesome, @fortawesome/fontawesome-svg-core, @fortawesome/free-solid-svg-icons
+- bootstrap, formik, yup, firebase, axios, query-string
+- express, mysql
 
 ## Install font: 
 - Poppins : <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">

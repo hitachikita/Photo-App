@@ -3,32 +3,21 @@ import { Col, Container, Row } from 'reactstrap';
 import { NavLink } from 'react-router-dom';
 import './header.scss';
 
-Header.propTypes = {};
+HeaderLogged.propTypes = {};
 
-function Header(props) {
+function HeaderLogged(props) {
     return (
         <header className="header">
             <Container>
                 <Row className="justify-content-between">
                     <Col xs="auto">
-                        <a
-                            className="header__link header__title"
-                            href="https://www.linkedin.com/in/duong-thanh-binh-6350441b2/"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            Linkedin
-                        </a>
-                    </Col>
-
-                    <Col xs="auto">
                         <NavLink
                             exact
                             className="header__link"
-                            to="/sign-in"
+                            to="/photos"
                             activeClassName="header_link--active"
                         >
-                            Sign In
+                            Home
                         </NavLink>
                     </Col>
                 </Row>
@@ -37,4 +26,4 @@ function Header(props) {
     );
 }
 
-export default Header;
+export default HeaderLogged;

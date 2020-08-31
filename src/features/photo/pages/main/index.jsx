@@ -28,7 +28,7 @@ function Main(props) {
     // console.log({ image });
 
     const [modal, setModal] = useState(false);
-    const [view, setView] = useState(photos);
+    const [view, setView] = useState({});
 
     const handlePhotoEditClick = (photo) => {
         console.log("Edit: ", photo);
