@@ -44,15 +44,47 @@ app.post('/checklogin', parser, function (req, res) {
                 correct: false
             });
         } else {
-          const data = results.forEach(result => {
-              res.status(200).send({
-                correct: true,
-                data: result,
-              });
+          const sql = `SELECT * FROM photo WHERE email='duongthanhbinhfb@gmail.com'`;
+          // const sql = `SELECT * FROM photo WHERE email='${data.email}'`;
+          var photos = {};
+          con.query(sql, function(erro, resu) {
+            if (erro) throw erro;
+            console.log("photo:.. ",resu);
+
+            if (resu.length > 0) {
+              photos = resu;
+            }
+            const data = results.forEach(result => {
+                res.status(200).send({
+                  correct: true,
+                  data: result,
+                  photos: photos,
+                });
+            });
+
           });
         }
     })
     //});
+})
+
+app.post('/insert', parser, function(req, res) {
+  const value = {
+    id: res.body.id.toString(),
+    categoryId: res.body.categoryId.toString(),
+    photo: res.body.photo.toString(),
+    title: res.body.title.toString(),
+  };
+    const sql = "INSERT INTO photo (email, id, categoryId, photo, title) VALUES ('duongthanhbinhfb@gmail.com', '91176', '5', 'https://picsum.photos/id/532/300/300', 'Enim laboris dolore consectetur et fugiat do amet eiusmod anim proident do culpa irure consectetur.')";
+
+    con.connect(function(err) {
+      if (err) throw err;
+      console.log("Connected!");
+        con.query(sql, function(errors, results) {
+          if (errors) throw errors;
+          console.log(results);
+        })
+    })
 })
 
 // con.connect(function (err) {

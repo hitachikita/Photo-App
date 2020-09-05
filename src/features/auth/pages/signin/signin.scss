@@ -12,12 +12,6 @@
     grid-template-columns: 30% 70%;
     grid-gap: 1fr;
     padding: 0 2fr;
-
-    &__form,
-    &__with-account {
-        margin: 2rem auto 1rem auto;
-        max-width: 25rem;
-    }
 }
 
 .img {
@@ -26,6 +20,7 @@
     align-items: center;
     flex-direction: column;
 }
+
 p {
     text-align: center;
     color: rgb(120, 120, 120);
@@ -34,10 +29,16 @@ p {
     width: 500px;
 }
 
-.text-content {
+.container {
     // display: flex;
     align-items: center;
     text-align: center;
+
+    &__form,
+    &__with-account {
+        margin: 2rem auto 1rem auto;
+        max-width: 25rem;
+    }
 }
 
 @media screen and (max-width: 900px) {

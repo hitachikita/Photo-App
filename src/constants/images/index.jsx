@@ -7,6 +7,7 @@ import waveBackground from '../../assets/images/wave.png';
 import background from '../../assets/images/bg.jpg';
 import avatar from '../../assets/images/avatar.svg';
 import login from '../../assets/images/bg.svg';
+import user from '../../assets/images/user.svg';
 
 const Images = {
     ORANGE_BG: orangeBackground,
@@ -18,6 +19,7 @@ const Images = {
     _BG: background,
     AVATAR: avatar,
     LOGIN: login,
+    USER: user,
 
 }
 

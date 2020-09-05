@@ -15,10 +15,15 @@ const userApi = {
                     setTimeout(() => {
                         resolve({
                             correct: res.data.correct,
-                            id: res.data.data.id,
-                            email: res.data.data.email,
-                            password: res.data.data.password,
-                            status: res.data.data.status,
+                            user: {
+                                id: res.data.data.id,
+                                email: res.data.data.email,
+                                password: res.data.data.password,
+                                status: res.data.data.status,
+                                name: res.data.data.name,
+                                imgUrl: res.data.data.imgUrl
+                            },
+                            photos: res.data.photos,
                         })
                     }, 500);
                 })

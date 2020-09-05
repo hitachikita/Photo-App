@@ -10,6 +10,8 @@ import { getMe } from 'app/userSlice';
 import { unwrapResult } from '@reduxjs/toolkit';
 import { useDispatch } from 'react-redux';
 import './components/FontAwesomeIcon';
+import PhotoLogged from 'features/photo/logged';
+import Profile from 'features/auth/pages/profile';
 
 //Lazy load - Core Slitting
 const Photo = React.lazy(() => import("./features/photo"));
@@ -88,7 +90,9 @@ function App() {
           <Switch>
             <Redirect exact from="/" to="/photos" />
             <Route path="/photos" component={Photo} />
+            <Route path="/logged" component={PhotoLogged} />
             <Route path="/sign-in" component={Signin} />
+            <Route path="/profile/:id" component={Profile} />
             <Route component={Notfound} />
           </Switch>
         </BrowserRouter>

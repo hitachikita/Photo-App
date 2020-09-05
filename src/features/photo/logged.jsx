@@ -9,25 +9,30 @@ import Header from 'components/header';
 import { useSelector } from 'react-redux';
 import HeaderLogged from 'components/header/logged';
 
-Photo.propTypes = {};
+PhotoLogged.propTypes = {};
 
-function Photo(props) {
-    // const user = useSelector(state => state.user);
-    // console.log("User...", user);
+function PhotoLogged(props) {
+    const userProfile = useSelector(state => state.user);
+    console.log("UserProfile:...", userProfile);
+    const user = userProfile.current.user;
+
     const match = useRouteMatch();
     console.log({ match });
     return (
         <div className="content">
-            <Header />
+            <HeaderLogged
+                user={user}
+            />
+
             <Switch>
                 <Route exact path={match.url} component={Main} />
-                {/* <Route path={`${match.url}/add`} component={Edit} />
+                <Route path={`${match.url}/add`} component={Edit} />
                 <Route path={`${match.url}/:photoId/edit`} component={Edit} />
-                <Route path={`${match.url}/:photoId/open`} component={View} /> */}
+                <Route path={`${match.url}/:photoId/open`} component={View} />
                 <Route component={Notfound} />
             </Switch>
         </div>
     );
 }
 
-export default Photo;
+export default PhotoLogged;

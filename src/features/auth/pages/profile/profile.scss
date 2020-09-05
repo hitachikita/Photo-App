@@ -1,0 +1,126 @@
+.container {
+    margin: 0;
+    padding: 0;
+    position: relative;
+    // top: 60px;
+}
+
+.content {
+    border: 1px solid rgb(216, 216, 216);
+    border-image: initial;
+    padding: 40px 30px;
+    // background: #e9e9e9;
+}
+
+form {
+    margin: 0;
+}
+
+form .header {
+    position: relative;
+    display: block;
+}
+
+form .header .below {
+    display: table;
+    grid-template-columns: 20% 80%;
+    // justify-content: center;
+    // align-items: center;
+}
+
+form .header .below .img {
+    display: table-cell;
+}
+
+form .header .below .img img {
+    width: 100%;
+}
+
+form .header .below .title {
+    display: table-cell;
+    vertical-align: bottom;
+}
+
+form .header .below .title h3 {
+    font-size: 20px;
+    // font-weight: bold;
+    font-family: "Poppins" sans-serif;
+    margin-left: 15px;
+}
+
+form .header .below .title .welcom {
+    display: flex;
+    justify-content: flex-start;
+}
+
+form .header p {
+    display: flex;
+    justify-content: flex-start;
+    font-family: "Poppins" sans-serif;
+    font-size: 15px;
+}
+
+.input {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    max-width: 500px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.input span {
+    display: flex;
+    justify-content: flex-start;
+    font-size: 18px;
+}
+
+.input .a1 {
+    margin-bottom: 20px;
+}
+
+.input .a1 .email {
+    color: #555;
+}
+
+.input span label {
+    margin-right: 20px;
+}
+
+.input .a2 .name-label {
+    padding-top: 5px;
+}
+
+.input span span {
+    height: 20px;
+}
+
+.input .a2 input {
+    height: 34px;
+    width: 270px;
+    color: #555;
+}
+
+.button {
+    display: block;
+    height: 40px;
+    border-radius: 5px;
+    margin: 1.2rem 0;
+    font-size: 1.2rem;
+    padding: 5px 10px;
+    outline: none;
+    border: none;
+    background-color: #ea1e30;
+    cursor: pointer;
+    color: #fff;
+    font-family: "Poppins", sans-serif;
+    background-size: 200%;
+    transition: 0.5s;
+    font-size: 17px;
+
+    &:hover {
+        background-color: rgb(141, 15, 15);
+    }
+}

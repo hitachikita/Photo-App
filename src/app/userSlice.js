@@ -7,14 +7,33 @@ export const getMe = createAsyncThunk('user/getMe', async (params, thunkAPI) => 
     return currentUser;
 });
 
-const userSlice = createSlice({
-    name: 'user',
-    initialState: {
-        current: {},
-        loading: false,
-        error: '',
+const initialUser = {
+    current: {
+        // id: 1,
+        // email: "duongthanhbinhfb@gmail.com",
+        // password: "12345",
+        // status: 0,
+        // name: "Dương Thanh Bình",
+        // imgUrl: "https://lh3.googleusercontent.com/ogw/ADGmqu-aALNvtMzrT-uHg_HJkcYwiyfuI9YMpK95r7hD=s83-c-mo",
     },
-    reducers: {},
+    loading: false,
+    error: '',
+}
+
+const userSlice = createSlice({
+    name: "user",
+    initialState: initialUser,
+    reducers: {
+        signOut: (state, action) => {
+            state = initialUser;
+            return state;
+        },
+        updateUser: (state, action) => {
+            const newName = action.payload;
+            state.current.user.name = newName;
+        }
+    },
+
     extraReducers: {
         [getMe.pending]: (state) => {
             state.loading = true;
@@ -23,12 +42,13 @@ const userSlice = createSlice({
             state.loading = false;
             state.error = action.error;
         },
-        [getMe.pending]: (state, action) => {
+        [getMe.fulfilled]: (state, action) => {
             state.loading = false;
             state.current = action.payload;
         },
     }
 });
 
-const { reducer: userReducer } = userSlice;
-export default userSlice;
+const { reducer: userReducer, actions } = userSlice;
+export const { signOut: signOutUser, updateUser } = actions;
+export default userReducer;

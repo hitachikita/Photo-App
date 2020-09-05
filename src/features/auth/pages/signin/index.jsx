@@ -15,6 +15,7 @@ import { useDispatch } from 'react-redux';
 import { getMe } from 'app/userSlice';
 import { unwrapResult } from '@reduxjs/toolkit';
 import userApi from 'api/userApi';
+import { addPhoto } from 'features/photo/photoSlice';
 
 Signin.propTypes = {};
 
@@ -45,32 +46,36 @@ function Signin(props) {
             email: values.username,
             password: values.password,
         };
+        setTimeout(() => {
+            const fetchUserApi = async () => {
+                try {
+                    // const response = userApi.postAll(params);
+                    // console.log("Return API: ", response);
 
-        const fetchUserApi = async () => {
-            try {
-                // const response = userApi.postAll(params);
-                // console.log("Return API: ", response);
+                    const action = getMe(params);
+                    const actionResult = await dispatch(action);
+                    const currentUser = unwrapResult(actionResult);
+                    console.log("Logged in user: ", actionResult, currentUser);
 
-                const action = getMe(params);
-                const actionResult = await dispatch(action);
-                const currentUser = unwrapResult(actionResult);
-                console.log("Logged in user: ", actionResult, currentUser);
+                    currentUser.photos.forEach(photo => {
+                        const actionPhotos = addPhoto(photo);
+                        console.log({ actionPhotos });
+                        dispatch(actionPhotos);
+                    })
 
-
-                if (currentUser.correct == true) {
-                    setIsCorrect('');
-                    history.push('/photos');
-                } else {
-                    setIsCorrect('is-invalid');
+                    if (currentUser.correct == true) {
+                        setIsCorrect('');
+                        history.push('/logged');
+                    } else {
+                        setIsCorrect('is-invalid');
+                    }
+                } catch (error) {
+                    console.log("Fecth Api errors: ", error);
+                    SetConnect("is-invalid");
                 }
-
-            } catch (error) {
-                console.log("Fecth Api errors: ", error);
-                SetConnect("is-invalid");
             }
-        }
-
-        fetchUserApi();
+            fetchUserApi();
+        }, 1000);
 
         // console.log("Log cais nayf ra: ", { params });
         // // const url = process.env.REACT_APP_API_USER;
@@ -106,10 +111,10 @@ function Signin(props) {
                     <p>Đăng nhập để tạo Album, lưu trữ hình ảnh và chia sẽ hình ảnh lên trang cá nhân của bạn.</p>
                     <img src={Images.LOGIN} />
                 </div>
-                <div className="text-center">
+                <div className="container">
                     <h2 className='title'>Welcom to photo-app!</h2>
 
-                    <div className='sign-in__form'>
+                    <div className='container__form'>
                         <SigninForm
                             onSubmit={handleSubmit}
                         />
@@ -118,7 +123,7 @@ function Signin(props) {
                         <div className={connect} />
                         <FormFeedback>Could not connect to the server, please check the network connection!</FormFeedback>
                     </div>
-                    <div className='sign-in__with-account'>
+                    <div className='container__with-account'>
                         {/* <p>or login with accounts</p> */}
                         <StyledFirebaseAuth className='others'
                             uiConfig={uiConfig}

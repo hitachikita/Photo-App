@@ -19,6 +19,9 @@ function Main(props) {
     var shareUrl = "facebook.com";
     var shareTitle = "Facebook";
     const photos = useSelector(state => state.photos);
+    const userProfile = useSelector(state => state.user);
+    const user = userProfile.current.correct;
+    console.log("User: ......", user);
     const dispatch = useDispatch();
     const history = useHistory();
 
@@ -71,12 +74,18 @@ function Main(props) {
 
     return (
         <div className="photo-main">
+
+            {/* {!user && <Header />}
+            {user && <HeaderLogged />} */}
+
             <Banner
                 title="Your awesome photos 😜😁"
                 backgroundUrl={Images.PINK_BG} />
             <Container className="text-center">
-                <div className="py-5">
-                    <Link to="/photos/add">Add new photo</Link>
+                <div className={!user && "none"}>
+                    <div className="py-5">
+                        <Link to="/logged/add">Add new photo</Link>
+                    </div>
                 </div>
 
                 <Photolist
@@ -129,7 +138,7 @@ function Main(props) {
                 </ModalFooter>
             </Modal>
 
-        </div>
+        </div >
     );
 }
 
